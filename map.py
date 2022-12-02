@@ -20,7 +20,12 @@ class Map:
         full = False
         day = 1
         while not full:
-            
+            for x in range(self._grid_offset + 1):
+                for y in range(self._grid_offset + 1):
+                    if self.grid[x][y] is not None:
+                        city = self.grid[x][y]
+                        city.transfer_to_neighbours()
+
             for x in range(self._grid_offset + 1):
                 for y in range(self._grid_offset + 1):
                     if self.grid[x][y] is not None:

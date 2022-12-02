@@ -33,6 +33,6 @@ class Country:
                 if neighbour.country_name != self.name:
                     return True
 
-    def only_country_mode(self) -> None
+    def only_country_mode(self) -> None:
         self.full = True
         self.day_of_full = 0

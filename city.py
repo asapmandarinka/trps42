@@ -11,8 +11,10 @@ class City:
         self.balance_per_day = {city_data["name"]: 0 for city_data in countries_list}
         self.neighbours: List['City'] = []
         self.full = False
+
     def set_neighbours(self, neighbours: List['City']) -> None:
         self.neighbours = neighbours
+
     def transfer_to_neighbours(self) -> None:
         for motif in self.balance:
             balance_of_motif = self.balance[motif]
@@ -21,12 +23,15 @@ class City:
                 for neighbour in self.neighbours:
                     self.balance[motif] -= amount_to_transfer
                     neighbour.add_balance_in_motif(motif, amount_to_transfer)
+
     def add_balance_in_motif(self, motif: str, amount: int) -> None:
         self.balance_per_day[motif] += amount
+
     def finalize_balance_per_day(self) -> None:
         for motif in self.balance_per_day:
             self.balance[motif] += self.balance_per_day[motif]
             self.balance_per_day[motif] = 0
+
         if not self.full:
             for motif in self.balance_per_day:
                 if self.balance[motif] == 0:
